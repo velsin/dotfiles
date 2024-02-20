@@ -1,0 +1,20 @@
+[window]
+opacity=1
+
+[font]
+normal = { family = "JetBrains Mono NerdFont", style = "Regular" }
+bold = { family = "JetBrains Mono NerdFont", style = "Bold" }
+italic = { family = "JetBrains Mono NerdFont", style = "Italic" }
+bold_italic = { family = "JetBrains Mono NerdFont", style = "BoldItalic" }
+
+[colors]
+transparent_background_colors = true
+
+[bell]
+animation = "EaseOutExpo"
+duration = 100
+color = "#000000"
+
+[cursor]
+style = { shape = "Block",  blinking = "On" }
+blink_timeout = 0
