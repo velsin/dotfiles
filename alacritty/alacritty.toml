@@ -20,34 +20,34 @@ style = { shape = "Block",  blinking = "On" }
 blink_timeout = 0
 
 ## Colors
-# github dark defualt Alacritty Colors
+# github dark dimmed Alacritty Colors
 
 # Default colors
 [colors.primary]
-background = '#0d1117'
-foreground = '#b3b1ad'
+background = '#22272e'
+foreground = '#909dab' # '#768390'
 
 # Normal colors
 [colors.normal]
-black   = '#484f58'
-red     = '#ff7b72'
-green   = '#3fb950'
-yellow  = '#d29922'
-blue    = '#58a6ff'
-magenta = '#bc8cff'
+black   = '#545d68'
+red     = '#f47067'
+green   = '#57ab5a'
+yellow  = '#c69026'
+blue    = '#539bf5'
+magenta = '#b083f0'
 cyan    = '#39c5cf'
-white   = '#b1bac4'
+white   = '#909dab'
 
 # Bright colors
 [colors.bright]
-black   = '#6e7681'
-red     = '#ffa198'
-green   = '#56d364'
-yellow  = '#e3b341'
-blue    = '#79c0ff'
-magenta = '#d2a8ff'
+black   = '#636e7b'
+red     = '#ff938a'
+green   = '#6bc46d'
+yellow  = '#daaa3f'
+blue    = '#6cb6ff'
+magenta = '#dcbdfb'
 cyan    = '#56d4dd'
-white   = '#f0f6fc'
+white   = '#cdd9e5'
 
 [[colors.indexed_colors]]
 index = 16
@@ -55,4 +55,4 @@ color = '#d18616'
 
 [[colors.indexed_colors]]
 index = 17
-color = '#ffa198'
+color = '#ff938a'
