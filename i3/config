@@ -193,13 +193,17 @@ bindsym $mod+p mode "resize"
 # Start polybar instead of using i3bar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
+# Load the desktop background
+exec --no-startup-id $HOME/.fehbg
+
 # Start picom when i3 starts or refreshes
 exec_always --no-startup-id picom -b
 
-# Configure i3 gaps
-gaps inner 10px
+# Configure i3 gaps and appearance
+gaps inner 8px
 gaps outer 2px
 smart_gaps inverse_outer
+default_border none
 
 # Additional hotkeys and workspace configurations
 bindsym $mod+Shift+Pause exec systemctl suspend
