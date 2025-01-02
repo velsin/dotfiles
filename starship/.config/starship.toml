@@ -1,11 +1,27 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
+format = """
+[](flamingo)\
+$os\
+$username\
+$directory\
+$git_branch\
+$git_status\
+$nodejs\
+$golang\
+$python\
+$docker_context\
+$time\
+\n$character
+"""
+
 palette = 'catppuccin_mocha'
 
 [palettes.catppuccin_mocha]
 rosewater = "#f5e0dc"
 flamingo = "#f2cdcd"
 pink = "#f5c2e7"
+mauve = "#cba6f7"
 orange = "#cba6f7"
 red = "#f38ba8"
 maroon = "#eba0ac"
@@ -31,16 +47,25 @@ mantle = "#181825"
 crust = "#11111b"
 
 [directory]
+style = "fg:crust bg:mauve"
 truncation_symbol = ".../"
 
+[git_branch]
+style = "fg:crust bg:maroon"
+format = 'on [ $symbol $branch ]($style)'
+
+[git_status]
+style = "fg:crust bg:maroon"
+format = '([\[$all_status$ahead_behind\] ]($style) )'
 [line_break]
 disabled = true
 
-[username]
-show_always = true
-
 [time]
+style = "fg:crust bg:sky"
 disabled = false
 time_format = "%R"
-style = "bg:sapphire"
-format = '[[  $time ](fg:text)]($style)'
+
+[username]
+style_user = "fg:crust bg:flamingo"
+style_root = "fg:crust bg:flamingo"
+show_always = true
