@@ -1,6 +1,6 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
-palette = 'catpuccin_mocha'
+palette = 'catppuccin_mocha'
 
 [palettes.catppuccin_mocha]
 rosewater = "#f5e0dc"
@@ -29,3 +29,18 @@ surface0 = "#313244"
 base = "#1e1e2e"
 mantle = "#181825"
 crust = "#11111b"
+
+[directory]
+truncation_symbol = ".../"
+
+[line_break]
+disabled = true
+
+[username]
+show_always = true
+
+[time]
+disabled = false
+time_format = "%R"
+style = "bg:sapphire"
+format = '[[  $time ](fg:text)]($style)'
