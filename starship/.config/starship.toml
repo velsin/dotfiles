@@ -11,8 +11,11 @@ $nodejs\
 $golang\
 $python\
 $docker_context\
+$kubernetes\
 $time\
-\n$character
+[](blue)\
+$line_break\
+$character
 """
 
 palette = 'catppuccin_mocha'
@@ -49,21 +52,26 @@ crust = "#11111b"
 [directory]
 style = "fg:crust bg:mauve"
 truncation_symbol = ".../"
+format = '[ $path ]($style)[$read_only]($read_only_style)'
 
 [git_branch]
 style = "fg:crust bg:maroon"
-format = 'on [ $symbol $branch ]($style)'
+format = '[ $symbol $branch ]($style)'
 
 [git_status]
 style = "fg:crust bg:maroon"
-format = '([\[$all_status$ahead_behind\] ]($style) )'
-[line_break]
-disabled = true
+format = '([\[$all_status$ahead_behind\] ]($style))'
+
+[kubernetes]
+disabled=false
+style = "fg:crust bg:lavender"
+format = '[ $symbol$context( \($namespace\)) ]($style)'
 
 [time]
-style = "fg:crust bg:sky"
+style = "fg:crust bg:blue"
 disabled = false
 time_format = "%R"
+format = '[  $time ]($style)'
 
 [username]
 style_user = "fg:crust bg:flamingo"
