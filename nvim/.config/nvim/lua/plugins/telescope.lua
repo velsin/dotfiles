@@ -12,9 +12,7 @@ return {
     config = function()
       require('telescope').setup {
         pickers = {
-          find_files = {
-            theme = "ivy"
-          }
+          find_files = {}
         },
         extensions = {
           fzf = {}
@@ -25,7 +23,7 @@ return {
 
       -- (f)ind (h)elp
       vim.keymap.set("n", "<space>fh", require('telescope.builtin').help_tags)
-      -- (f)in(d)
+      -- (f)ind in (d)irectory
       vim.keymap.set("n", "<space>fd", require('telescope.builtin').find_files)
       -- (e)dit co(n)fig
       vim.keymap.set("n", "<space>en",
@@ -43,6 +41,8 @@ return {
           }
         end
       )
+      -- Imports our custom (f)ind (g)reg picker
+      require("config.telescope.multigrep").setup()
     end
   }
 }
