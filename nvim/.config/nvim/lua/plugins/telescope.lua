@@ -15,14 +15,31 @@ return {
           find_files = {
             theme = "ivy"
           }
-        }
+        },
+        extensions = {
+          fzf = {}
+        },
       }
+
+      require('telescope').load_extension('fzf')
+
+      -- (f)ind (h)elp
       vim.keymap.set("n", "<space>fh", require('telescope.builtin').help_tags)
+      -- (f)in(d)
       vim.keymap.set("n", "<space>fd", require('telescope.builtin').find_files)
+      -- (e)dit co(n)fig
       vim.keymap.set("n", "<space>en",
         function()
           require('telescope.builtin').find_files {
             cwd = vim.fn.stdpath("config")
+          }
+        end
+      )
+      -- (e)dit (p)ackages
+      vim.keymap.set("n", "<space>ep",
+        function()
+          require('telescope.builtin').find_files {
+            cwd = vim.fs.joinpath(vim.fn.stdpath("data"), "lazy")
           }
         end
       )
