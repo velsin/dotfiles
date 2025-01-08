@@ -33,7 +33,7 @@ local live_multigrep = function(opts)
       return vim.iter({
         args,
         -- Add default config options to the command
-        { "--color=never", "--no-heading", "--with-filename", "--line-number", "--column", "--smart-case" }
+        { "--color=never", "--no-heading", "--with-filename", "--line-number", "--column", "--smart-case", "--follow" }
       }):flatten():totable()
     end,
     entry_maker = make_entry.gen_from_vimgrep(opts),
