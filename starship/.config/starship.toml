@@ -1,13 +1,11 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
-[](flamingo)\
 $os\
 $username\
 $directory\
 $git_branch\
 $git_status\
-$nodejs\
 $golang\
 $python\
 $docker_context\
@@ -56,7 +54,7 @@ format = '[ $path ]($style)[$read_only]($read_only_style)'
 
 [git_branch]
 style = "fg:crust bg:maroon"
-format = '[ $symbol $branch ]($style)'
+format = '[ $symbol$branch ]($style)'
 
 [git_status]
 style = "fg:crust bg:maroon"
