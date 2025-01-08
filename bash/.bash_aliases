@@ -1,5 +1,6 @@
 alias kctl="kubectl"
 alias tf="terraform"
+alias tg="terragrunt"
 
 alias gits="git status"
 alias gitap="git add -p"
