@@ -10,7 +10,6 @@ $golang\
 $python\
 $docker_context\
 $kubernetes\
-$time\
 }
 $line_break\
 $character
