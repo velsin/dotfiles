@@ -50,6 +50,7 @@ crust = "#11111b"
 style = "fg:green"
 truncation_symbol = ".../"
 format = '[ $path ]($style)[$read_only]($read_only_style)'
+truncation_length = 3
 
 [git_branch]
 style = "fg:maroon"
