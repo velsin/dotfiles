@@ -3,6 +3,7 @@
 format = """
 {$os\
 $username\
+$hostname\
 $directory\
 $git_branch\
 $git_status\
@@ -60,6 +61,11 @@ format = '[ $symbol$branch ]($style)'
 style = "fg:maroon"
 format = '([\[$all_status$ahead_behind\] ]($style))'
 
+[hostname]
+ssh_only = false
+style = "fg:rosewater"
+format = '[@$ssh_symbol$hostname ]($style)'
+
 [kubernetes]
 disabled=false
 style = "fg:mauve"
@@ -76,4 +82,4 @@ format = '[  $time ]($style)'
 show_always = true
 style_user = "fg:flamingo"
 style_root = "fg:red"
-format = '[ $user ]($style)'
+format = '[ $user]($style)'
