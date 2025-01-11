@@ -24,9 +24,6 @@ vim.keymap.set("n", "<leader>st", function()
 end
 )
 
--- (o)pen (o)il
-vim.keymap.set("n", "<leader>oo", "<cmd>Oil<CR>")
-
 -- Highlight when yanking text
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking text',
