@@ -24,7 +24,13 @@ return {
       -- (f)ind (h)elp
       vim.keymap.set("n", "<space>fh", require('telescope.builtin').help_tags)
       -- (f)ind in (d)irectory
-      vim.keymap.set("n", "<space>fd", require('telescope.builtin').find_files)
+      vim.keymap.set("n", "<space>fd",
+        function()
+          require('telescope.builtin').find_files {
+            hidden = true
+          }
+        end
+      )
       -- (e)dit co(n)fig
       vim.keymap.set("n", "<space>en",
         function()
