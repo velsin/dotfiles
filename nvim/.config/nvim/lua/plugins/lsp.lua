@@ -20,7 +20,8 @@ return {
       require("lspconfig").ruff.setup {
         init_options = {
           settings = {
-            configurationPreference = "filesystemFirst"
+            configurationPreference = "filesystemFirst",
+            lineLength = 100
           }
         }
       }
