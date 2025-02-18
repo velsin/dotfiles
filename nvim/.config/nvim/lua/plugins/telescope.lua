@@ -27,7 +27,6 @@ return {
       vim.keymap.set("n", "<space>fd",
         function()
           require('telescope.builtin').find_files {
-            hidden = true
           }
         end
       )

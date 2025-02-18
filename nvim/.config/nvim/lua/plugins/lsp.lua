@@ -25,6 +25,7 @@ return {
           }
         }
       }
+      require("lspconfig").pylsp.setup {}
       require("lspconfig").terraformls.setup {}
       require("lspconfig").gopls.setup {}
       -- Set up autoformat on save
