@@ -29,6 +29,29 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking text',
   group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
   callback = function()
-    vim.highlight.on_yank()
+    vim.hl.on_yank()
   end,
 })
+
+-- Use OSC 52 clipboard
+vim.g.clipboard = {
+  name = 'OSC 52',
+  copy = {
+    ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
+    ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
+  },
+  paste = {
+    ['+'] = function()
+      return {
+        vim.fn.split(vim.fn.getreg(""), "\n"),
+        vim.fn.getregtype(""),
+      }
+    end,
+    ['*'] = function()
+      return {
+        vim.fn.split(vim.fn.getreg(""), "\n"),
+        vim.fn.getregtype(""),
+      }
+    end,
+  },
+}
