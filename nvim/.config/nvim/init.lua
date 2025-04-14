@@ -9,6 +9,13 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.clipboard:append("unnamedplus")
 
+vim.opt.list = true
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+
+vim.opt.cursorline = true
+
+vim.opt.scrolloff = 10
+
 -- Custom Keybinds
 
 -- Use jk to scroll in quickfix
