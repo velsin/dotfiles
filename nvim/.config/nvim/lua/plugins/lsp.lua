@@ -29,6 +29,7 @@ return {
       -- require("lspconfig").pylsp.setup {}
       require("lspconfig").terraformls.setup {}
       require("lspconfig").gopls.setup {}
+      require("lspconfig").yamlls.setup {}
       -- Set up autoformat on save
       vim.api.nvim_create_autocmd('LspAttach', {
         callback = function(args)
