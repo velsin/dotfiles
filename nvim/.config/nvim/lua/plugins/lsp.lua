@@ -47,6 +47,13 @@ return {
           end
         end,
       })
+
+
+      -- Change default gotodef behavior
+      -- (g)o to (D)eclaration
+      vim.api.nvim_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", { noremap = true, silent = true })
+      -- (g)o to (d)efinition
+      vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })
     end,
   }
 }
