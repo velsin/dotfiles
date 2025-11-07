@@ -16,20 +16,20 @@ return {
       }
     },
     config = function()
-      require("lspconfig").lua_ls.setup {}
-      require("lspconfig").ruff.setup {
+      vim.lsp.enable('lua_ls')
+      vim.lsp.config('ruff', {
         init_options = {
           settings = {
             configurationPreference = "filesystemFirst",
             lineLength = 100
           }
         }
-      }
-      require("lspconfig").pyright.setup {}
-      -- require("lspconfig").pylsp.setup {}
-      require("lspconfig").terraformls.setup {}
-      require("lspconfig").gopls.setup {}
-      require("lspconfig").yamlls.setup {
+      })
+      vim.lsp.enable('ruff')
+      vim.lsp.enable('pyright')
+      vim.lsp.enable('terraformls')
+      vim.lsp.enable('gopls')
+      vim.lsp.config('yamlls', {
         settings = {
           yaml = {
             format = {
@@ -38,12 +38,18 @@ return {
             }
           }
         }
-      }
+      })
+      vim.lsp.enable('yamlls')
+
       -- Set up autoformat on save
       vim.api.nvim_create_autocmd('LspAttach', {
         callback = function(args)
           local client = vim.lsp.get_client_by_id(args.data.client_id)
           if not client then return end
+
+          if client.supports_method('textDocument/completion') then
+            vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
+          end
 
           if client.supports_method('textDocument/formatting') then
             -- Format the current buffer when saving

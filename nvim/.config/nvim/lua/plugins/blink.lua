@@ -27,6 +27,11 @@ return {
 
       completion = {
         keyword = { range = 'full' },
+        list = {
+          selection = {
+            preselect = false, auto_insert = false
+          }
+        }
       },
       signature = {
         enabled = true

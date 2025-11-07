@@ -13,6 +13,8 @@ vim.opt.cursorline = true
 
 vim.opt.scrolloff = 10
 
+vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
+
 -- Custom Keybinds
 
 -- Use jk to scroll in quickfix
@@ -62,7 +64,7 @@ vim.g.clipboard = {
 
 -- Configure Diagnostic display settings
 --
--- -- Lua configuration (init.lua or a file in your lua/config/ directory)
+-- Lua configuration (init.lua or a file in your lua/config/ directory)
 local signs = {
   Error = { text = "E", texthl = "DiagnosticSignError" },
   Warn = { text = "W", texthl = "DiagnosticSignWarn" },
@@ -70,18 +72,18 @@ local signs = {
   Hint = { text = "H", texthl = "DiagnosticSignHint" },
 }
 
-for type, sign in pairs(signs) do
-  vim.fn.sign_define("LspDiagnosticsSign" .. type, {
-    text = sign.text,
-    texthl = sign.texthl,
-  })
-end
-
+--for type, sign in pairs(signs) do
+--  vim.fn.sign_define("LspDiagnosticsSign" .. type, {
+--    text = sign.text,
+--    texthl = sign.texthl,
+--  })
+--end
+--
 vim.diagnostic.config({
   signs = true,
   underline = true,
   update_in_insert = false,
-  virtual_text = true,
+  virtual_text = false,
   virtual_lines = true,
   float = {
     focusable = false,
