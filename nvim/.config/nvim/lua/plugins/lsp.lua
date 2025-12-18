@@ -27,6 +27,9 @@ return {
       })
       vim.lsp.enable('ruff')
       vim.lsp.enable('pyright')
+      vim.lsp.config('terraformls', {
+        cmd = { 'terraform-ls', 'serve', '-log-file=/dev/null' }
+      })
       vim.lsp.enable('terraformls')
       vim.lsp.enable('gopls')
       vim.lsp.config('yamlls', {
@@ -34,7 +37,7 @@ return {
           yaml = {
             format = {
               enable = true,
-              singleQuote = true,
+              singleQuote = false,
             }
           }
         }
