@@ -37,7 +37,7 @@ return {
           yaml = {
             format = {
               enable = true,
-              singleQuote = false,
+              singleQuote = true,
             }
           }
         }
