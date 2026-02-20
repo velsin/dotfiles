@@ -18,6 +18,10 @@ local live_multigrep = function(opts)
       local pieces = vim.split(prompt, "  ")
       local args = { "rg" }
 
+      if opts.hidden then
+        table.insert(args, "--hidden")
+      end
+
       -- The first part of the prompt is the regex pattern
       if pieces[1] then
         table.insert(args, "-e")
@@ -52,6 +56,8 @@ end
 
 M.setup = function()
   vim.keymap.set("n", "<leader>fg", live_multigrep)
+  -- (f)ind (G)rep (including hidden)
+  vim.keymap.set("n", "<leader>fG", function() live_multigrep({ hidden = true }) end)
 end
 
 return M

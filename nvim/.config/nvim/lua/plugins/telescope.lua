@@ -30,6 +30,14 @@ return {
           }
         end
       )
+      -- (f)ind in (D)irectory (including hidden)
+      vim.keymap.set("n", "<space>fD",
+        function()
+          require('telescope.builtin').find_files {
+            hidden = true,
+          }
+        end
+      )
       -- (e)dit co(n)fig
       vim.keymap.set("n", "<space>en",
         function()
