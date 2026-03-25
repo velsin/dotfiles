@@ -2,6 +2,7 @@
 
 format = """
 {$username\
+$container\
 $directory\
 $git_branch\
 $git_status\
@@ -83,3 +84,7 @@ show_always = true
 style_user = "fg:flamingo"
 style_root = "fg:red"
 format = '[ $user]($style)'
+
+[container]
+style = "fg:red"
+format = '[ $symbol]($style)'
