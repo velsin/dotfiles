@@ -1,0 +1,54 @@
+FROM ubuntu:24.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+# ── Pinned tool versions (bump these manually to upgrade) ────────────────────
+ENV STARSHIP_VERSION=1.23.0
+ENV ZELLIJ_VERSION=0.42.2
+ENV TERRAFORM_VERSION=1.12.0
+ENV TERRAGRUNT_VERSION=0.78.1
+ENV KUBECTL_VERSION=1.33.0
+
+# ── Core system packages ──────────────────────────────────────────────────────
+RUN apt-get update && apt-get install -y \
+    curl wget git stow unzip xz-utils gpg ca-certificates \
+    build-essential pkg-config software-properties-common \
+    python3 python3-pip python3-venv \
+    nodejs npm \
+    ripgrep fd-find \
+    fish
+
+# ── Neovim (stable PPA) ───────────────────────────────────────────────────────
+RUN add-apt-repository ppa:neovim-ppa/stable -y \
+  && apt-get update \
+  && apt-get install -y neovim \
+  && rm -rf /var/lib/apt/lists/*
+
+# ── Starship ─────────────────────────────────────────────────────────────────
+RUN curl -Lo /tmp/starship.tar.gz \
+      "https://github.com/starship/starship/releases/download/v${STARSHIP_VERSION}/starship-x86_64-unknown-linux-musl.tar.gz" \
+  && tar -xzf /tmp/starship.tar.gz -C /usr/local/bin/ \
+  && rm /tmp/starship.tar.gz
+
+# ── Zellij ───────────────────────────────────────────────────────────────────
+RUN curl -Lo /tmp/zellij.tar.gz \
+      "https://github.com/zellij-org/zellij/releases/download/v${ZELLIJ_VERSION}/zellij-x86_64-unknown-linux-musl.tar.gz" \
+  && tar -xzf /tmp/zellij.tar.gz -C /usr/local/bin/ \
+  && rm /tmp/zellij.tar.gz
+
+# ── Terraform ────────────────────────────────────────────────────────────────
+RUN curl -Lo /tmp/terraform.zip \
+      "https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip" \
+  && unzip -q /tmp/terraform.zip -d /usr/local/bin/ \
+  && rm /tmp/terraform.zip
+
+# ── Terragrunt ───────────────────────────────────────────────────────────────
+RUN curl -Lo /usr/local/bin/terragrunt \
+      "https://github.com/gruntwork-io/terragrunt/releases/download/v${TERRAGRUNT_VERSION}/terragrunt_linux_amd64" \
+  && chmod +x /usr/local/bin/terragrunt
+
+# ── kubectl ──────────────────────────────────────────────────────────────────
+RUN curl -Lo /usr/local/bin/kubectl \
+      "https://dl.k8s.io/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl" \
+  && chmod +x /usr/local/bin/kubectl
+
