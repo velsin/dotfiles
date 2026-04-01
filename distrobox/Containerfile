@@ -1,8 +1,9 @@
 FROM ubuntu:24.04
 
-ENV DEBIAN_FRONTEND=noninteractive
+ENV SHELL=/usr/bin/fish
 
 # ── Pinned tool versions (bump these manually to upgrade) ────────────────────
+ENV NEOVIM_VERSION=0.12.0
 ENV STARSHIP_VERSION=1.23.0
 ENV ZELLIJ_VERSION=0.42.2
 ENV TERRAFORM_VERSION=1.12.0
@@ -12,17 +13,22 @@ ENV KUBECTL_VERSION=1.33.0
 # ── Core system packages ──────────────────────────────────────────────────────
 RUN apt-get update && apt-get install -y \
     curl wget git stow unzip xz-utils gpg ca-certificates \
-    build-essential pkg-config software-properties-common \
+    build-essential pkg-config \
     python3 python3-pip python3-venv \
     nodejs npm \
     ripgrep fd-find \
-    fish
-
-# ── Neovim (stable PPA) ───────────────────────────────────────────────────────
-RUN add-apt-repository ppa:neovim-ppa/stable -y \
-  && apt-get update \
-  && apt-get install -y neovim \
+    fish \
   && rm -rf /var/lib/apt/lists/*
+
+# ── Atuin ────────────────────────────────────────────────────────────────────
+RUN curl --proto '=https' --tlsv1.2 -LsSf "https://setup.atuin.sh" | sh -s -- --non-interactive
+
+# ── Neovim ───────────────────────────────────────────────────────────────────
+RUN curl -Lo /tmp/nvim.tar.gz \
+      "https://github.com/neovim/neovim/releases/download/v${NEOVIM_VERSION}/nvim-linux-x86_64.tar.gz" \
+  && tar -xzf /tmp/nvim.tar.gz -C /tmp/ \
+  && cp -r /tmp/nvim-linux-x86_64/. /usr/local/ \
+  && rm -rf /tmp/nvim.tar.gz /tmp/nvim-linux-x86_64
 
 # ── Starship ─────────────────────────────────────────────────────────────────
 RUN curl -Lo /tmp/starship.tar.gz \
