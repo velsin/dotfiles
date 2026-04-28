@@ -45,27 +45,27 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- Use OSC 52 clipboard
-vim.g.clipboard = {
-  name = 'OSC 52',
-  copy = {
-    ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
-    ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
-  },
-  paste = {
-    ['+'] = function()
-      return {
-        vim.fn.split(vim.fn.getreg(""), "\n"),
-        vim.fn.getregtype(""),
-      }
-    end,
-    ['*'] = function()
-      return {
-        vim.fn.split(vim.fn.getreg(""), "\n"),
-        vim.fn.getregtype(""),
-      }
-    end,
-  },
-}
+-- vim.g.clipboard = {
+--   name = 'OSC 52',
+--   copy = {
+--     ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
+--     ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
+--   },
+--   paste = {
+--     ['+'] = function()
+--       return {
+--         vim.fn.split(vim.fn.getreg(""), "\n"),
+--         vim.fn.getregtype(""),
+--       }
+--     end,
+--     ['*'] = function()
+--       return {
+--         vim.fn.split(vim.fn.getreg(""), "\n"),
+--         vim.fn.getregtype(""),
+--       }
+--     end,
+--   },
+-- }
 
 -- Configure Diagnostic display settings
 --
