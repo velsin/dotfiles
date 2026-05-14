@@ -43,6 +43,8 @@ return {
         }
       })
       vim.lsp.enable('yamlls')
+      vim.lsp.enable('eslint')
+      vim.lsp.enable('vtsls')
 
       -- Set up autoformat on save
       vim.api.nvim_create_autocmd('LspAttach', {
